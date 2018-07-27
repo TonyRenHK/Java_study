@@ -82,3 +82,78 @@ class ListNode {
   
   
   
+import java.io.*;
+import java.util.*;
+//279. Perfect Squares
+
+/*class Solution {
+  public int numSquares(int n) {
+    int result =0;
+    int currentNum = 0;
+    Set<Integer> factorSet = new HashSet<Integer>();
+    
+    while((currentNum * currentNum )<=n){
+      currentNum++;
+      
+    }
+    return result;
+    
+  }
+  
+  
+  public static void main(String[] args) { 
+    System.out.println( "*▶▶▶▶");
+    
+  }
+  
+}*/
+
+
+class Solution{
+  
+  public static int fib(int n) {
+
+      if (n < 0) {
+          throw new IllegalArgumentException(
+              "Index was negative. No such thing as a negative index in a series.");
+      }
+
+      // base cases
+      if (n == 0 || n == 1) {
+          return n;
+      }
+
+      System.out.printf("computing fib(%d)\n", n);
+      return fib(n - 1) + fib(n - 2);
+  }
+  
+  
+  public static int numSquares(int n) {
+    System.out.println( "********");
+    int [] dp = new int[n+1];
+    dp[0]=0;
+    for(int i=1;i<=n;i++){//System.out.println(i);
+
+      int min=Integer.MAX_VALUE;
+      for(int j=1;j<=Math.sqrt(i);j++){
+        System.out.println(" min : "+min + " i: " + i + " j : " +j);
+        min = Math.min(min,dp[i-(j*j)]+1);
+      }
+      dp[i]=min;
+    }
+    
+    System.out.println( "********");
+    return dp[n];
+  }
+  
+  public static void main(String[] args){
+    System.out.println( Math.sqrt(1) );
+    //System.out.println( numSquares(15) ); 
+  }
+ 
+}
+
+
+
+
+
